@@ -13,3 +13,5 @@ Kompilacja pierwszego programu w języku `c`
 
     gcc {input-filse} -o {output-app}
     gcc src/main.c -o main.exe
+
+Coś nowego!
