@@ -1,6 +1,6 @@
 {
   "code-runner.executorMap": {
-    "c": "cd $dir && gcc ./$fileName ./lib/file.c ./lib/socket-server.c ./lib/socket-client.c ./lib/new.c ./lib/exmath.c ./lib/exstring.c -o $fileNameWithoutExt.exe -lWs2_32 -lwsock32"
+    "c": "cd $dir && gcc ./$fileName -o $fileNameWithoutExt.exe -lWs2_32 -lwsock32"
   },
   "files.associations": {
     "stdio.h": "c",

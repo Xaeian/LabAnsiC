@@ -5,13 +5,7 @@
       "name": "Win32",
       "includePath":
       [
-        "${workspaceFolder}/src/**",
-        "${workspaceFolder}/src/sys/**",
-        "${workspaceFolder}/src/lib/**",
-        "${workspaceFolder}/src/app/**",
-        "${workspaceFolder}/src/proto/**",
-        "${workspaceFolder}/src/proto/app/**",
-        "${workspaceFolder}/src/proto/lib/**"
+        "${workspaceFolder}/src/**"
       ],
       "defines": ["_DEBUG", "UNICODE","_UNICODE"],
       "compilerPath": "C:/WinGW/mingw64/bin/gcc.exe",
