@@ -1,0 +1,35 @@
+{
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "debug",
+      "command": "gcc",
+      "args": [
+        "-g",
+        "${workspaceRoot}/src/main.c",
+        "${workspaceRoot}/src/sys/file.c",
+        "${workspaceRoot}/src/sys/socket-server.c",
+        "${workspaceRoot}/src/sys/socket-client.c",
+        "${workspaceRoot}/src/per/rtc.c",
+        "${workspaceRoot}/src/lib/new.c",
+        "${workspaceRoot}/src/lib/exmath.c",
+        "${workspaceRoot}/src/lib/exstring.c",
+        "${workspaceRoot}/src/proto/proto.c",
+
+        "${workspaceRoot}/src/proto/app/pb_qlic.c",
+        "${workspaceRoot}/src/proto/lib/pb_common.c",
+        "${workspaceRoot}/src/proto/lib/pb_decode.c",
+        "${workspaceRoot}/src/proto/lib/pb_encode.c",
+
+        "-o",
+        "${workspaceRoot}/main.exe",
+        "-lWs2_32",
+        "-lwsock32"
+      ],
+      "options": {
+        "cwd": "C:/WinGW/mingw64/bin"
+      }
+    }
+  ],
+  "version": "2.0.0"
+}

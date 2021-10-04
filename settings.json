@@ -1,0 +1,18 @@
+{
+  "code-runner.executorMap": {
+    "c": "cd $dir && gcc ./$fileName ./lib/file.c ./lib/socket-server.c ./lib/socket-client.c ./lib/new.c ./lib/exmath.c ./lib/exstring.c -o $fileNameWithoutExt.exe -lWs2_32 -lwsock32"
+  },
+  "files.associations": {
+    "stdio.h": "c",
+    "socket_server.h": "c",
+    "cstdio": "c",
+    "stdint.h": "c",
+    "ws2tcpip.h": "c",
+    "windows.h": "c",
+    "winsock2.h": "c",
+    "socket-server.h": "c",
+    "file.h": "c",
+    "typeinfo": "c",
+    "type_traits": "c"
+  }
+}
