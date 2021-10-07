@@ -9,9 +9,9 @@
       ],
       "defines": ["_DEBUG", "UNICODE","_UNICODE"],
       "compilerPath": "C:/WinGW/mingw64/bin/gcc.exe",
-      "cStandard": "c11",
+      "cStandard": "gnu17",
       "cppStandard": "gnu++14",
-      "intelliSenseMode": "clang-x64"
+      "intelliSenseMode": "windows-gcc-x64"
     }
   ],
   "version": 4
