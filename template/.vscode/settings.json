@@ -1,6 +1,8 @@
 {
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
   "code-runner.executorMap": {
-    "c": "cd $dir && gcc ./$fileName -o $fileNameWithoutExt.exe -lWs2_32 -lwsock32"
+    "c": "gcc ./src/$fileName -o ./$fileNameWithoutExt.exe -lWs2_32 -lwsock32 && $fileNameWithoutExt.exe"
   },
   "files.associations": {
     "stdio.h": "c",

@@ -1,13 +1,15 @@
 {
-  "configurations":
-  [
+  "configurations": [
     {
       "name": "Win32",
-      "includePath":
-      [
+      "includePath": [
         "${workspaceFolder}/src/**"
       ],
-      "defines": ["_DEBUG", "UNICODE","_UNICODE"],
+      "defines": [
+        "_DEBUG",
+        "UNICODE",
+        "_UNICODE"
+      ],
       "compilerPath": "C:/WinGW/mingw64/bin/gcc.exe",
       "cStandard": "gnu17",
       "cppStandard": "gnu++14",
