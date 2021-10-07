@@ -38,7 +38,11 @@ oraz dokonać pierwszej kompilacji
     gcc {input-filse} -o {output-app}
     gcc src/main.c -o main.exe
 
-Jednak, aby pracować wygodniej oraz debugować potrzebujemy jakiegoś IDE. Świetnie sprawdzi się [Visual Studio Code](https://code.visualstudio.com/Download), dla którego skonfigurowany projekt umieszczony jest w folderze `template` na tym repozytorium.
+Jednak, aby pracować wygodniej oraz debugować potrzebujemy jakiegoś IDE. Świetnie sprawdzi się [Visual Studio Code](https://code.visualstudio.com/Download) z rozszerzeniami:
+  - C/C++,
+  - Code Runner,
+
+dla którego skonfigurowany projekt umieszczony jest w folderze `template` na tym repozytorium.
 
 # Podstawy
 
@@ -414,9 +418,13 @@ String jest **wskaźnikiem**/**referencją**, który wskazuje na rejestr zawiera
 | addr | 0xFF01 | 0xFF02 | 0xFF03 | 0xFF04 | 0xFF05 | 0xFF06 | 0xFF07 | 0xFF08 | 0xFF09 | 0xFF10 | 0xFF11 | 0xFF12 | 0xFF12 |
 
 `str1` = 0xFF01 ⟶ `"Guantanamera"`
+
 `str[0]` = `'G'` = `0x47` = `71`
+
 `str[7]` = `'n'` = `0x6E` = `110`
+
 `&str[7]` = 0xFF01 ⟶ `"namera"`
+
 
 
 <!---
