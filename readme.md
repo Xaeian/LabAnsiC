@@ -39,8 +39,9 @@ oraz dokonać pierwszej kompilacji
     gcc src/main.c -o main.exe
 
 Jednak, aby pracować wygodniej oraz debugować potrzebujemy jakiegoś IDE. Świetnie sprawdzi się [Visual Studio Code](https://code.visualstudio.com/Download) z rozszerzeniami:
-  - C/C++,
-  - Code Runner,
+
+- C/C++,
+- Code Runner,
 
 dla którego skonfigurowany projekt umieszczony jest w folderze `template` na tym repozytorium.
 
@@ -362,6 +363,7 @@ while(n <= 10) {
 ```
 
 ## Arrays & Strings
+
 <!---
 #include <stdio.h>
 
@@ -413,19 +415,17 @@ char str6[] = { 0x47,0x75,0x61,0x6E,0x74,0x61,0x6E,0x61,0x6D,0x65,0x72,0x61, 0 }
 Powiązanie pomiędzy liczbą a znakiem znajdziemy w tablicy **ASCII**.
 String jest **wskaźnikiem**/**referencją**, który wskazuje na rejestr zawierający pierwszy znak łańcucha. Łańcuch ciągnie się do rejestru, w którym znajduje się wartość `0`.
 
-| str  |   G    |   u    |   a    |   n    |   t    |   a    |   n    |   a    |   m    |   e    |   r    |   a    |   \0   |
-| :--: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
-| addr | 0xFF01 | 0xFF02 | 0xFF03 | 0xFF04 | 0xFF05 | 0xFF06 | 0xFF07 | 0xFF08 | 0xFF09 | 0xFF10 | 0xFF11 | 0xFF12 | 0xFF12 |
+| str  |  G   |  u   |  a   |  n   |  t   |  a   |  n   |  a   |  m   |  e   |  r   |  a   |  \0  |
+| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| addr | 0xF1 | 0xF2 | 0xF3 | 0xF4 | 0xF5 | 0xF6 | 0xF7 | 0xF8 | 0xF9 | 0xFA | 0xFB | 0xFC | 0xFD |
 
-`str1` = 0xFF01 ⟶ `"Guantanamera"`
+`str1` = 0xF1 ⟶ `"Guantanamera"`
 
 `str[0]` = `'G'` = `0x47` = `71`
 
-`str[7]` = `'n'` = `0x6E` = `110`
+`str[6]` = `'n'` = `0x6E` = `110`
 
-`&str[7]` = 0xFF01 ⟶ `"namera"`
-
-
+`&str[6]` = 0xF7 ⟶ `"namera"`
 
 <!---
 
