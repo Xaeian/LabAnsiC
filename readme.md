@@ -268,8 +268,7 @@ weekDay_t day = WEEKDAY_Thursday;
 Typy wyliczeniowe stożone za pomocą słowa `enum` mają wielkość `int`. Gdy chcemy zaoszczędzić pamięć, możemy zmienić `_t` na `_e` oraz przypisywać jego wartości do zmiennych zajmujących mniej pamięci w celu optymalizacji.
 
 ```c#
-typedef enum
-{
+typedef enum {
   WEEKDAY_Monday = 1,
   WEEKDAY_Tuesday = 2,
   WEEKDAY_Wednesday = 3,
