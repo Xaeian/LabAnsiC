@@ -209,10 +209,10 @@ Widzimy, że po każdym bloku kodu dla każdej opcji znajduje się instrukcji `b
 uint8_t day = 4;
 switch (day)
 {
-  case 1: printf("Do weekendy jeszcze trzeba przeżyć poniedziałek");
-  case 2: printf("Do weekendy jeszcze trzeba przeżyć wtorek");
-  case 3: printf("Do weekendy jeszcze trzeba przeżyć środę");
-  case 4: printf("Do weekendy jeszcze trzeba przeżyć czwartek");
+  case 1: printf("Do weekendy jeszcze trzeba przeżyć poniedziałek\r\n");
+  case 2: printf("Do weekendy jeszcze trzeba przeżyć wtorek\r\n");
+  case 3: printf("Do weekendy jeszcze trzeba przeżyć środę\r\n");
+  case 4: printf("Do weekendy jeszcze trzeba przeżyć czwartek\r\n");
   case 5: printf("Do weekendy jeszcze trzeba przeżyć piątek");
     break;
   default:
@@ -308,9 +308,6 @@ Operatory logiczne
 | Większy-Równy  |   `>=`   | x >= y    |
 | Mniejszy-Równy |   `<=`   | x <= y    |
 
-Operatory logiczne dla prawdy zwracają `1` natomiast dla fałszu `0`.
-Podczas implementacji `0` jest traktowane jako fałsz, a każda inna wartość jako prawda.
-
 ```cpp
 int32_t a = 12, b = 16;
 
@@ -325,12 +322,29 @@ else {
 }
 ```
 
+Gdy obsługą instrukcji warunkowej jest pojedyncza pętla to możemy pominąć nawiasy `{}`
+
 ```cpp
 int32_t a = 12, b = 16;
 
 if(a == b) printf("Result: %d = %d", a, b);
 else if (a > b) printf("Result: %d > %d", a, b);
 else printf("Result: %d < %d", a, b);
+```
+
+Operatory logiczne dla prawdy zwracają `1` natomiast dla fałszu `0`.
+Podczas implementacji `0` jest traktowane jako fałsz, a każda inna wartość jako prawda.
+
+```cpp
+uint8_t error_code = 23;
+if(error_code) printf("Error: %i", error_code);
+```
+
+W wnętrzu `if` możemy umieszczać wywołania funkcji
+
+```cpp
+uint8_t error_code;
+if(error_code = connection())  printf("No connection!");
 ```
 
 Łączenie wyrażeń logicznych
@@ -351,82 +365,240 @@ else printf("Hi");
 
 ## Loops
 
-**while**
+...
+
+## Pointers
+
+Deklaracja i wywołanie:
 
 ```cpp
-uint8_t n = 1;
-while(n <= 10) {
-	printf("%d ", n);
-	n++;
-}
+int var; // deklaracja zmiennej
+int *p; // deklaracja wskaźnika
+var; // wartość
+&var; // adres gdzie znajduje się wartość
+p // wskaźnik na adres pamięci
+*p; // wartość, na którą wskazuje wskaźnik,
 ```
 
-## Arrays & Strings
-
-<!---
-#include <stdio.h>
-
 ```cpp
-
-
-uint8_t n[ 10 ];
-
-for ( i = 0; i < 10; i++ ) {
-      n[ i ] = i + 100; /* set element at location i to i + 100 */
-}
-
-   /* output each array element's value */
-   for (j = 0; j < 10; j++ ) {
-      printf("Element[%d] = %d\n", j, n[j] );
-   }
+int nbr = 64;
+printf("Value: %d\r\n", nbr); // wartość
+printf("Adrress: %p\r\n", &nbr);
+// adres gdzie znajduje się wartość
 ```
 
-<!---
-|     | x0  | x1  | x2  | x3  | x4  | x5  | x6  | x7  | x8  | x9  | xA  | xB  | xC  | xD  | xE  | xF  |
-| --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| x0  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| x1  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| x2  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| x3  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| x4  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| x5  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| x6  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| x7  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| x8  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| x9  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| xA  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| xB  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| xC  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| xD  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| xE  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| xF  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
--->
+```cpp
+int nbr = 64;
+unt *p = &nbr; // ustawienie wskaźnika
+printf("Value: %d\n", *p);
+// wartość, na którą wskazuje wskaźnik,
+printf("Adrress: %p\n", &p);
+// wskaźnik na adres pamięci
+```
+
+## Arrays
+
+Deklaracja tablicy
 
 ```cpp
-char str1[100] = "Guantanamera\0";
-char str2[] = "Guantanamera";
-char str3[13] = { 'G','u','a','n','t','a','n','a','m','e','r','a', '\0' };
-char str4[] = { 'G','u','a','n','t','a','n','a','m','e','r','a', 0 };
-char str5[] = { 71,117,97,110,116,97,110,97,109,101,114,97, 0 };
-char str6[] = { 0x47,0x75,0x61,0x6E,0x74,0x61,0x6E,0x61,0x6D,0x65,0x72,0x61, 0 };
+uint8_t ary[4]; // OK
+uint8_t ary[]; // ERR
+uint8_t ary[4] = {1, 2, 4, 8}; // OK
+uint8_t ary[] = {1, 2, 4, 8}; // OK
+```
+
+|    index     |    [0]     |    [1]     |    [2]     |    [3]     |
+| :----------: | :--------: | :--------: | :--------: | :--------: |
+| value `addr` | 1 `0xFF01` | 2 `0xFF02` | 4 `0xFF03` | 8 `0xFF04` |
+
+Deklaracja tablicy 2D
+
+```cpp
+uint8_t ary2d[2][2] = {1, 2, 4, 8}; // OK
+uint8_t ary2d[2][2] = {{1, 2}, {4, 8}}; // OK
+uint8_t ary2d[][2] = {1, 2, 4, 8}; // OK
+uint8_t ary2d[][] = {1, 2, 4, 8}; // ERR
+uint8_t ary2d[2][] = {1, 2, 4, 8}; // ERR
+```
+
+| m↓ n→ | [0] | [1] |
+| :---: | :-: | :-: |
+|  [0]  |  1 `0xFF01`  |  2 `0xFF02`  |
+|  [1]  |  4 `0xFF03`  |  8 `0xFF04`  |
+
+```cpp
+char ary2d[m][n]
+```
+
+**Arrays & Pointers**
+
+```cpp
+uint8_t ary[] = {1, 2, 4, 8};
+uint8_t ary2d[2][2] = {{1, 2}, {4, 8}};
+uint8_t *p = ary;
+uint8_t *p2d = ary2d;
+```
+
+`p` → wskaźnik
+`ary` → referencja (statyczna referencja)
+
+
+`*p` = `*p2d` = `p[0]` = `ary[0]` = `ary2d[0][0]`= `ary2d[0]` = `1`
+`*(p+1)` = `*(p2d+1)` = `p[1]` = `ary[1]` = `ary2d[0][1]`= `ary2d[1]` = `2`
+`*(p+2)` = `*(p2d+2)` = `p[2]` = `ary[2]` = `ary2d[1][0]`= `ary2d[2]` = `4`
+`*(p+3)` = `*(p2d+3)` = `p[3]` = `ary[3]` = `ary2d[1][1]`= `ary2d[3]` = `8`
+
+## Strings
+
+Wszystkie poniższe deklaracje dotyczą tego samego łańcucha znaków `Hello`
+
+```cpp
+char str1[100] = "Hello\0";
+char str2[] = "Hello";
+char str3[6] = { 'H','e','l','l','o', '\0' };
+char str4[] = { 'H','e','l','l','o', 0 };
+char str5[] = { 72,101,108,108,111,0 };
+char str6[] = { 0x48,0x65,0x6C,0x6C,0x6F,0x00 };
 ```
 
 Powiązanie pomiędzy liczbą a znakiem znajdziemy w tablicy **ASCII**.
 String jest **wskaźnikiem**/**referencją**, który wskazuje na rejestr zawierający pierwszy znak łańcucha. Łańcuch ciągnie się do rejestru, w którym znajduje się wartość `0`.
 
-| str  |  G   |  u   |  a   |  n   |  t   |  a   |  n   |  a   |  m   |  e   |  r   |  a   |  \0  |
-| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
-| addr | 0xF1 | 0xF2 | 0xF3 | 0xF4 | 0xF5 | 0xF6 | 0xF7 | 0xF8 | 0xF9 | 0xFA | 0xFB | 0xFC | 0xFD |
+| str  |   'H'    |   'e'    |   'l'    |   'l'    |   'o'    |    0     |
+| :--: | :------: | :------: | :------: | :------: | :------: | :------: |
+| addr | `0xFF01` | `0xFF02` | `0xFF03` | `0xFF04` | `0xFF05` | `0xFF06` |
 
-`str1` = 0xF1 ⟶ `"Guantanamera"`
+Wyświetlanie stringów i znaków
 
-`str[0]` = `'G'` = `0x47` = `71`
+```cpp
+printf("%s\n", str); // Hello
+printf("%c\n", str[0]); // H
+printf("%u\n", str[0]); // 72
+printf("0x%x\n", str[0]); // 0x48
+```
 
-`str[6]` = `'n'` = `0x6E` = `110`
+```cpp
+printf("%c\n", *str); // H
+printf("%c\n", str[2]); // l
+printf("%s\n", str + 2); // llo
+printf("%c\n", *(str + 2)); // l
+printf("%s\n", &str[2]); // llo
+```
 
-`&str[6]` = 0xF7 ⟶ `"namera"`
+Znaki w łańcuchu odpowiadają odpowiednim liczbą `uint8_t` - przynajmniej dla kodowania **utf-8**.
+
+![**ascii1**](./image/ascii1.png)
+
+Wartości do `0x1F` zawierają znaki niedrukowane spośród, których najważniejsze są:
+- `\0` - Koniec stringa
+- `\r\n`, `\n`, `\r` - nowa linia w zależności od systemu
+
+Wartości do `0x7F` zawierają stały zestaw znaków
+
+![**ascii2**](./image/ascii2.png)
+
+A potem jest różnie w zależności od kodowania
+
+## ArraySum
+
+Funkcja obliczająca **sum**ę elementów znajdujących się w tablicy:
+
+```cpp
+int ArraySum(int ary[], uint16_t length)
+{
+  int sum = 0;
+  for(int i = 0; i < length; i++) {
+    sum += ary[i];
+  }
+  return sum;
+}
+```
+
+Declarations & **Execut**:
+
+```cpp
+#define LEN 6
+//...
+int main_ary[LEN] = { 1, 2, 3, 4, 5, 6};
+int sum = ArraySum(main_ary, LEN);
+printf("Suma: %i", sum);
+```
+
+W przypadku powiązanych z sobą wartości, które powtarzają się kilkukrotnie w kodzie, warto użyć definicji `#define`
+
+**Console** Output:
+
+    Suma: 21
+
+Realizacja tej samej funkcji z użyciem wskaźników:
+
+```cpp
+int ArraySum(int *ary, uint16_t length)
+{
+  int sum = 0;
+  while(length) {
+    sum += *ary;
+    length--;
+    ary++;
+  }
+  return sum;
+}
+```
+
+## CaesarCode
+
+Funkcja kodująca wielkie litery danego łańcucha znaków `char *str` za pomocą kodu cezara przesunięciem `int8_t offset`:
+
+```cpp
+#define RANGE 'Z' - 'A'
+void CaesarCode_Print(char *str, int8_t offset)
+{
+  offset %= RANGE;
+  while(*str) {
+    char sign = *str;
+    if(sign >= 'A' && sign <= 'Z') {
+      sign += offset;
+      if(sign > 'Z') { sign -= RANGE; }
+      else if(sign < 'A') { sign += RANGE; }
+    }
+    printf("%c", sign);
+    str++;
+  }
+}
+```
+
+Declarations & **Execut**:
+
+```cpp
+char *main_str = "#HeLLo-7WoRLd";
+CaesarCode_Print(main_str, 3);
+```
+
+**Console** Output:
+
+    #KeOOo-7ZoUOd
+
+## W następnym odcinku
+
+Zwracanie tablic, stringów. Alokacja pamięci i takie tam...
+
+
+<!--
+
+liczy pierwsze i listy
+uint16_t vector sin to uint8_t 
+Macieże operacje 
+Własne objekty
+
+-->
+
+
 
 <!---
+
+const
+
+komentaże
 
 ```cpp
 
