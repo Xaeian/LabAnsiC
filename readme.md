@@ -209,10 +209,10 @@ Widzimy, że po każdym bloku kodu dla każdej opcji znajduje się instrukcji `b
 uint8_t day = 4;
 switch (day)
 {
-  case 1: printf("Do weekendy jeszcze trzeba przeżyć poniedziałek\r\n");
-  case 2: printf("Do weekendy jeszcze trzeba przeżyć wtorek\r\n");
-  case 3: printf("Do weekendy jeszcze trzeba przeżyć środę\r\n");
-  case 4: printf("Do weekendy jeszcze trzeba przeżyć czwartek\r\n");
+  case 1: printf("Do weekendy jeszcze trzeba przeżyć poniedziałek\n");
+  case 2: printf("Do weekendy jeszcze trzeba przeżyć wtorek\n");
+  case 3: printf("Do weekendy jeszcze trzeba przeżyć środę\n");
+  case 4: printf("Do weekendy jeszcze trzeba przeżyć czwartek\n");
   case 5: printf("Do weekendy jeszcze trzeba przeżyć piątek");
     break;
   default:
@@ -444,8 +444,11 @@ uint8_t *p2d = ary2d;
 
 
 `*p` = `*p2d` = `p[0]` = `ary[0]` = `ary2d[0][0]`= `ary2d[0]` = `1`
+
 `*(p+1)` = `*(p2d+1)` = `p[1]` = `ary[1]` = `ary2d[0][1]`= `ary2d[1]` = `2`
+
 `*(p+2)` = `*(p2d+2)` = `p[2]` = `ary[2]` = `ary2d[1][0]`= `ary2d[2]` = `4`
+
 `*(p+3)` = `*(p2d+3)` = `p[3]` = `ary[3]` = `ary2d[1][1]`= `ary2d[3]` = `8`
 
 ## Strings
