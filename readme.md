@@ -60,7 +60,7 @@ dla którego skonfigurowany projekt umieszczony jest w folderze `template` na ty
 | `unsigned short`, `unsigned short int`                   |    16 |     2 |   `+`   |     `%u`      |
 | `long`, `long int`, `signed long`, `signed long int`     |    32 |     4 |   `-`   |     `%ld`     |
 | `unsigned long`, `unsigned long int`                     |    32 |     4 |   `+`   |     `%lu`     |
-| `int`,                                                   | 16/32 |   2/4 |   `-`   |  `%d`/`%ld`   |
+| `int`,                                                   | 16/32 |   2/4 |   `-`   |     `%i`      |
 | `long long`, `long long int`                             |    64 |     8 |   `-`   | `%ld`/`%I64d` |
 | `unsigned long long`, `unsigned long long int`           |    64 |     8 |   `+`   | `%lu`/`%I64u` |
 
@@ -295,6 +295,10 @@ Możemy też po prostu użyć `#define`. Przyjmuje się, że definicje składaj�
 uint8_t day = WEEKDAY_THURSDAY;
 ```
 
+## Functions
+
+...
+
 ## If...Else
 
 Operatory logiczne
@@ -363,6 +367,10 @@ else if (age < 28) printf("Hello");
 else printf("Hi");
 ```
 
+<!---
+TODO: Example value - buffer, error
+-->
+
 ## Loops
 
 ...
@@ -421,10 +429,10 @@ uint8_t ary2d[][] = {1, 2, 4, 8}; // ERR
 uint8_t ary2d[2][] = {1, 2, 4, 8}; // ERR
 ```
 
-| m↓ n→ | [0] | [1] |
-| :---: | :-: | :-: |
-|  [0]  |  1 `0xFF01`  |  2 `0xFF02`  |
-|  [1]  |  4 `0xFF03`  |  8 `0xFF04`  |
+| m↓ n→ |    [0]     |    [1]     |
+| :---: | :--------: | :--------: |
+|  [0]  | 1 `0xFF01` | 2 `0xFF02` |
+|  [1]  | 4 `0xFF03` | 8 `0xFF04` |
 
 ```cpp
 char ary2d[m][n]
@@ -441,7 +449,6 @@ uint8_t *p2d = ary2d;
 
 `p` → wskaźnik
 `ary` → referencja (statyczna referencja)
-
 
 `*p` = `*p2d` = `p[0]` = `ary[0]` = `ary2d[0][0]`= `ary2d[0]` = `1`
 
@@ -493,6 +500,7 @@ Znaki w łańcuchu odpowiadają odpowiednim liczbą `uint8_t` - przynajmniej dla
 ![**ascii1**](./image/ascii1.png)
 
 Wartości do `0x1F` zawierają znaki niedrukowane spośród, których najważniejsze są:
+
 - `\0` - Koniec stringa
 - `\r\n`, `\n`, `\r` - nowa linia w zależności od systemu
 
@@ -585,17 +593,14 @@ CaesarCode_Print(main_str, 3);
 
 Zwracanie tablic, stringów. Alokacja pamięci i takie tam...
 
-
 <!--
 
 liczy pierwsze i listy
-uint16_t vector sin to uint8_t 
-Macieże operacje 
+uint16_t vector sin to uint8_t
+Macieże operacje
 Własne objekty
 
 -->
-
-
 
 <!---
 
