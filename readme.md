@@ -658,7 +658,7 @@ int RandRange(int min,  int max) {
   return min + rand() % (max - min + 1);
 }
 ```
-Stosując powyższy schemat wywołując funkcję uzyskamy fajną podpowiedź
+Stosując powyższy schemat tworząc funkcję uzyskamy przydatną podpowiedź
 
 ![description](./image/description.png)
 
