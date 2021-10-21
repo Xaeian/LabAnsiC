@@ -35,3 +35,18 @@ return char *replaceFnc(char *str, char sep);
 - Dodać zamianę znaków Polskich na ich odpowiedniki bez _ogonków_
 - Dadać zamianę cyfr na ich nazwy w języku angielskim
 --->
+
+### Zadanie 2
+
+**Zadanie inne niż mówiłem** ❗ Jak to czytasz, powiadom nieświadomych kolegów z grupy ❕
+
+Doimplementować do pseudoklasy `vector` pseudometody:
+- `vectorPrint` - wyświetlanie zawartości wektora
+- `vectorMerge` - łączenie dwóch wektorów
+- `vestorSum` - sumowanie wektorów
+- `vestorDifference` - odejmowanie wektorów
+- `vestorMultiplication` - mnożenie wektorów
+- `vestorPop` - usówanie ostatniej wartości z wektora
+- `vestorPush` - dodawanie do wektora wartości
+
+Każda funkcja musi być ładnie opisana oraz musi w funkcji `main` znajdować się jej przykładowe wywołanie. Jak ktoś nie wyśle mi chociaż jednej funkcji, wywalam z ćwiczeń 😠

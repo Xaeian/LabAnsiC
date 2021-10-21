@@ -510,7 +510,7 @@ Wartości do `0x7F` zawierają stały zestaw znaków
 
 A potem jest różnie w zależności od kodowania
 
-## ArraySum
+## Program `ArraySum`
 
 Funkcja obliczająca **sum**ę elementów znajdujących się w tablicy:
 
@@ -556,7 +556,7 @@ int ArraySum(int *ary, uint16_t length)
 }
 ```
 
-## CaesarCode
+## Program `CaesarCode`
 
 Funkcja kodująca wielkie litery danego łańcucha znaków `char *str` za pomocą kodu cezara przesunięciem `int8_t offset`:
 
@@ -589,9 +589,205 @@ CaesarCode_Print(main_str, 3);
 
     #KeOOo-7ZoUOd
 
-## W następnym odcinku
+## Alokacja pamięci
 
-Zwracanie tablic, stringów. Alokacja pamięci i takie tam...
+Zajmowanie i zwalnianie pamięci
+
+```cpp
+#include <stdlib.h>
+//...
+size_t size = 32;
+uint32_t *buffer = malloc(size * sizeof(uint32_t)); // zarezerwowanie  128 byte'ów pamięci
+//...
+free(buffer); // zwolnienie pamięci
+```
+
+## Structures
+
+Deklaracja konstruktora i zmiennej
+
+```cpp
+// konstruktor
+struct Point {
+  int32_t x;
+  int32_t y;
+};
+
+// deklaracja zmiennej
+struct Point point; // brak inicjalizacji
+struct Point point = { 5, 2 };
+struct Point point = { .x = 5, .y = 2 };
+struct Point point = { .y = 2, .y = 5 };
+```
+
+```cpp
+// konstruktor
+typedef struct {
+  int32_t x;
+  int32_t y;
+} point_t;
+
+// deklaracja
+point_t point; // brak inicjalizacji
+point_t point = { 5, 2 };
+point_t point = { .x = 5, .y = 2 };
+point_t point = { .y = 2, .y = 5 };
+```
+
+Wywołanie
+
+```cpp
+struct point point;
+point.x = 3; // ustawienie współrzędnej `x` gdy mamy strukturę
+
+struct point *p = &point; // wskaźnik na strukturę
+(*p).x = 3; // ustawienie współrzędnej `x` gdy mamy wskaźnik na strukturę
+p->x = 3; // ale lepiej tak
+```
+
+## Opisy funkcji
+
+```cpp
+/**
+ * Losowanie liczby typu `int` z przedziału od `min` do `max`.
+ * @param min dolny zakres losowania.
+ * @param max górny zakres losowania.
+ * @return wynik losowania.
+ */
+int RandRange(int min,  int max) {
+  return min + rand() % (max - min + 1);
+}
+```
+Stosując powyższy schemat wywołując funkcję uzyskamy fajną podpowiedź
+
+![description](./image/description.png)
+
+## Pseudoklasa `vector`
+
+Krok **1**: Funkcja `FillArray32MinMax`
+
+```cpp
+/**
+ * Funkcja wypełnia przekazaną tablice 'array' wartościami od 'min' do 'max' co '1'.
+ * @param array zadeklarowana tablica.
+ * @param min wartość, od której zaczyna wypełniać się tablica.
+ * @param min wartość,  na której kończy wypełniać się tablica.
+ * @param limit długość zadeklarowanej tablicy.
+ * @retval liczba elementów, którymi została wypełniona tablica. Zwraca '0' jeżeli limit < abs(max - min).
+ */
+uint16_t FillArray32MinMax(int32_t array[], int32_t min, int32_t max, uint16_t limit)
+{
+  uint16_t i = 0;
+  while(min != max) {
+    if(max > min) array[i++] = min++;
+    else array[i++] = min--;
+    if(!--limit) return 0;
+  };
+  array[i++] = min;
+  return i;
+}
+
+//...
+
+#define ARRAY_LENGTH 16
+int main(void)
+{
+  int32_t array[ARRAY_LENGTH];
+  uint16_t length = FillArray32MinMax(array, -5, 10, ARRAY_LENGTH);
+
+  if(length) {
+    for(int i = 0; i < length; i++) printf("%d ", array[i]);
+  }
+  else printf("error");
+  return 0;
+}
+```
+
+Krok **2**: Funkcja `GetArray32MinMax`
+
+```cpp
+/**
+ * Funkcja tworzy tablicę 'array' i wypełnia ją wartościami od 'min' do 'max' co '1'. 
+ * @param array wskaźnik na niezadeklarowaną tablicę
+ * @param min wartość, od której zaczyna wypełniać się tablica.
+ * @param min wartość, na której kończy wypełniać się tablica.
+ * @retval długość zwróconej tablicy.
+ */
+uint16_t GetArray32MinMax(int32_t *array[], int32_t min, int32_t max)
+{
+  uint16_t length;
+  if(max > min) length = (uint16_t)(max - min + 1);
+  else length = (uint16_t)(min - max + 1);
+
+  *array = (int32_t *)malloc(length * sizeof(int32_t));
+  return FillArray32MinMax(*array, min, max, length);
+}
+
+//...
+
+int main(void)
+{
+  int32_t *array;
+  uint16_t length = GetArray32MinMax(&array, -5, 10);
+
+  if(length) {
+    for(int i = 0; i < length; i++) printf("%d ", array[i]);
+  }
+  else printf("error");
+  return 0;
+}
+```
+
+Krok **3**: Pseudoklasa `vector`
+
+```cpp
+/**
+ * Wektor typu uint32_t
+ * @param buffer wskaźnik na zawartość wektora
+ * @param length długość wektora
+ */
+typedef struct vectorType {
+  int32_t *buffer;
+  uint16_t length;
+} vector_t;
+
+/**
+ * Funkcja tworzy wektor 'vector_t' i wypełnia go wartościami od 'min' do 'max' co '1'.
+ * @param min wartość, od której zaczyna wypełniać się tablica.
+ * @param min wartość, na której kończy wypełniać się tablica.
+ * @retval wektor 'vector_t'.
+ */
+vector_t vectorInit(int32_t min, int32_t max)
+{
+  vector_t vector;
+  vector.length = GetArray32MinMax(&vector.buffer, min, max);
+  return vector;
+}
+
+/**
+ * Funkcja sprawdza, czy wektor jest zainicjowany.
+ * @param vector wskaźnika na wektor 'vector_t'.
+ * @retval true: wektor zainicjowany, false: wektor niezainicjowany.
+ */
+bool vectorIsSet(vector_t *vector)
+{
+  if(vector->length) return true;
+  else false;
+}
+
+//...
+
+int main(void)
+{
+  vector_t vector = vectorInit(5, 20);
+  
+  if(vectorIsSet(&vector)) {
+    for(int i = 0; i < vector.length; i++) printf("%d ", vector.buffer[i]);
+  }
+  else printf("error");
+  return 0;
+}
+```
 
 <!--
 
@@ -728,5 +924,29 @@ int main (void)
 }
 ```
 
+
+
+
+
+
+# Rust
+
+Na następce języka c powoli wyrasta rust, ale ciężko powiedziać jak to bedzie dalej wyglądało. Obecnie jest on mało popularny, gdyż jest mało pododów rynkowych, żeby zmieniać 
+
+
+
+RUST jest systemowym językiem programowania. Reklamowany jest jako język szybki, zapobiegający naruszeniom pamięci, oraz jako język, który umożliwia bezpieczne operowanie wątkami
+
+
+https://www.rust-lang.org/tools/install
+
+Rust Extension Pack
+
+Rust
+Better TOML
+crates
+
+
+https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16
 
 -->

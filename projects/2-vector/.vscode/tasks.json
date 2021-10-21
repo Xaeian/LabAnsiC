@@ -1,0 +1,21 @@
+{
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "debug",
+      "command": "gcc",
+      "args": [
+        "-g",
+        "${workspaceRoot}/src/main.c",
+        "-o",
+        "${workspaceRoot}/main.exe",
+        "-lWs2_32",
+        "-lwsock32"
+      ],
+      "options": {
+        "cwd": "C:/WinGW/mingw64/bin"
+      }
+    }
+  ],
+  "version": "2.0.0"
+}
