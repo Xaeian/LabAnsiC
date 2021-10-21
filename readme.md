@@ -673,7 +673,8 @@ Krok **1**: Funkcja `FillArray32MinMax`
  * @param min wartość, od której zaczyna wypełniać się tablica.
  * @param min wartość,  na której kończy wypełniać się tablica.
  * @param limit długość zadeklarowanej tablicy.
- * @retval liczba elementów, którymi została wypełniona tablica. Zwraca '0' jeżeli limit < abs(max - min).
+ * @retval liczba elementów, którymi została wypełniona tablica.
+ * Zwraca '0' jeżeli limit < abs(max - min).
  */
 uint16_t FillArray32MinMax(int32_t array[], int32_t min, int32_t max, uint16_t limit)
 {
