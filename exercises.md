@@ -24,17 +24,15 @@ void replaceFnc(char *str, char sep);
 void replaceFnc(char str[], char sep)
 ```
 
-- Sprawić, aby funkcja nie wyświetlała wyniku, a jedynie zwracała łańcuch znaków, który będzie wyświetalny w funkcji głównej
+- Sprawić, aby funkcja nie wyświetlała wyniku, a jedynie zwracała łańcuch znaków, który będzie wyświetalny w funkcji głównej. Łańcuch wejściowy nie ma ulec modyfikacji.
 
 ```cpp
 return char *replaceFnc(char *str, char sep);
 ```
 
-<!---
 - Dodać zamianę dużych liter na małe w obsłudze funkcji
 - Dodać zamianę znaków Polskich na ich odpowiedniki bez _ogonków_
 - Dadać zamianę cyfr na ich nazwy w języku angielskim
---->
 
 ### Zadanie 2
 
