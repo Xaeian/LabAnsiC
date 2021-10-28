@@ -790,12 +790,74 @@ int main(void)
 }
 ```
 
+## Tworzenie i wysyłanie bufora
+
+Gdy przejdziemy z zabawy językiem `c` na komputerach do niskopoziomowych implementacji będziemy pozbawienie funkcji `printf`. Będziemy w pętli albo w przerwaniu realizowani wpisanie danej do odpowiedniego rejestru lub konfigurowali **DMA**, a hardware zajmie się wysłaniem danych. Z odebranymi danymi możemy zrobić, co chcemy. Również po prostu wyświetlić.
+
+Jednym z rozwiązań jest umieszczanie danych w buforze i stosowanie wskaźników `head` i `tail`. `head` zwiększa się, gdy dodajemy dane do bufora, natomiast `tail` gdy je wysyłamy. Gdy wskaźniki są sobie równe, nie ma danych do wysłania. 
+
+Struktura bufora
+
+```cpp
+typedef struct {
+  const char *name;
+  uint16_t head;
+  uint16_t tail;
+  uint8_t *buffer;
+  uint16_t length;
+} BUFF_t;
+```
+
+Inicjacja bufora
+
+```cpp
+const char name[] = "x";
+uint8_t array[64];
+BUFF_t buff = { .name = name, .buffer = array, .length = sizeof(x_array) };
+```
+
+Funkcje dodania i wysłania danych
+
+```cpp
+void BUFF_Push(BUFF_t *buff, uint8_t *buffer, uint16_t length)
+{
+  while (length--) {
+    buff->buffer[buff->head++] = *buffer;
+    buffer++;
+    if(buff->head >= buff->length) buff->head = 0;
+  }
+}
+
+bool BUFF_Send(BUFF_t *buff)
+{
+  if(buff->head != buff->tail) {
+    printf("%s:%i ", buff->name, buff->buffer[buff->tail++]);
+    if(buff->tail >= buff->length) buff->tail = 0;
+    return true;
+  } else return false;
+}
+```
+
+Dodanie danych do bufora i ich wysłanie
+
+```cpp
+int main(void)
+{
+  uint32_t a = 0x01020304;
+  BUFF_Push(&buff, (uint8_t *)&a, sizeof(uint32_t));
+  while(BUFF_Send(&buff));
+```
+
+Struktura `BUFF_t` oraz funkcję `BUFF_Push`, `BUFF_Send` tworzą pseudoklasę.
+
 <!--
 
 liczy pierwsze i listy
 uint16_t vector sin to uint8_t
 Macieże operacje
 Własne objekty
+
+Czytanie plików??
 
 -->
 

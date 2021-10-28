@@ -41,8 +41,7 @@ bool BUFF_Send(BUFF_t *buff)
     printf("%s:%i ", buff->name, buff->buffer[buff->tail++]);
     if(buff->tail >= buff->length) buff->tail = 0;
     return true;
-  }
-  return false;
+  } else return false;
 }
 
 int main(void)
