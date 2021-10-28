@@ -832,6 +832,7 @@ bool BUFF_Send(BUFF_t *buff)
 {
   if(buff->head != buff->tail) {
     printf("%s:%i ", buff->name, buff->buffer[buff->tail++]);
+    // REG = buff->buffer[buff->tail++]; // for embedded systems
     if(buff->tail >= buff->length) buff->tail = 0;
     return true;
   } else return false;
