@@ -847,6 +847,7 @@ int main(void)
   uint32_t a = 0x01020304;
   BUFF_Push(&buff, (uint8_t *)&a, sizeof(uint32_t));
   while(BUFF_Send(&buff));
+}
 ```
 
 Struktura `BUFF_t` oraz funkcję `BUFF_Push`, `BUFF_Send` tworzą pseudoklasę.

@@ -30,7 +30,7 @@ void replaceFnc(char str[], char sep)
 return char *replaceFnc(char *str, char sep);
 ```
 
-- Dodać zamianę dużych liter na małe w obsłudze funkcji
+- Dodać, w obsłudze funkcji, zamianę dużych liter na małe lub odwrotnie, w zależności od przekazanego parametru.
 - Dodać zamianę znaków Polskich na ich odpowiedniki bez _ogonków_
 - Dadać zamianę cyfr na ich nazwy w języku angielskim
 
