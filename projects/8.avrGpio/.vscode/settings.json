@@ -1,0 +1,24 @@
+{
+  "editor.formatOnSave": false,
+  "editor.tabSize": 2,
+  "editor.mouseWheelZoom": true,
+  "code-runner.executorMap": {
+    "c": "gcc ./src/gpio.c ./src/main.c -o ./main.exe -lWs2_32 -lwsock32 && main.exe"
+  },
+  "files.associations": {
+    "stdio.h": "c",
+    "socket_server.h": "c",
+    "cstdio": "c",
+    "stdint.h": "c",
+    "ws2tcpip.h": "c",
+    "windows.h": "c",
+    "winsock2.h": "c",
+    "socket-server.h": "c",
+    "file.h": "c",
+    "typeinfo": "c",
+    "type_traits": "c",
+    "list.h": "c",
+    "limits": "c",
+    "stdbool.h": "c"
+  }
+}

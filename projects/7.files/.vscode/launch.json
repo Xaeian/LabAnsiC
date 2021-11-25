@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "debug",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceRoot}/main.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "C:/WinGW/mingw64/bin/gdb.exe",
+      "setupCommands": [
+        {
+          "description": "Włącz formatowanie kodu dla gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "debug"
+    }
+  ]
+}

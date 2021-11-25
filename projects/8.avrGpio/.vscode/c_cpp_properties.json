@@ -1,0 +1,16 @@
+{
+  "configurations": [
+    {
+      "name": "Win32",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "C:/WinAVR/avr/include"
+      ],
+      "compilerPath": "C:/WinAVR/bin/avr-gcc.exe",
+      "cStandard": "c11",
+      "cppStandard": "c++14",
+      "intelliSenseMode": "gcc-arm"
+    }
+  ],
+  "version": 4
+}
