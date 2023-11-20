@@ -16,7 +16,7 @@ W nowszych językach bardzo często optymalizacja skierowana jest w kierunku fun
 
 Już dodatki wprowadzone w języku **C++** jako objekty i łańcuchy znaków ze względu na dodaktowy narzut są często nie wykorzystywane podczas programowania mikrokontorlerów. Nawet bardzo często rezygnuję się z funkcji `sprintf`, dostpnej w języku C, której użyteczność jest niewielka względem wagie w kB, zużycia pamięci podręcznej i szybkości działnia. Często stosuje się prostrze, szyte na mierę rozwiązania. Ale to wszystko zależy od procka na którym ostatecznie ma pracować aplikacja i odczekwań w stosunku do niej...
 
-Dodatowe **C** jest jedynom technologią w której zawsze dostarczane są pliki nagłówkowe dla mikrokontrolerów, co jest szczególnie ważne, gdy rozpoczynamy naukę. Czasami wspierane są inne technologie. Często społeczność łada braki, których nie zapewnił producent, ale na start lepiej mieć oficjalne gotowce, z których można skorzystać.
+Dodatowe **C** jest jedynom technologią w której zawsze dostarczane są pliki nagłówkowe dla mikrokontrolerów, co jest szczególnie ważne, gdy rozpoczynamy naukę. Czasami wspierane są inne technologie. Często społeczność łata braki, których nie zapewnił producent, ale na start lepiej mieć oficjalne gotowce, z których można skorzystać.
 
 ### Assembler?
 

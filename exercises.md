@@ -1,10 +1,37 @@
+### Zadanie 0
+
+Przekształć ciąg liczb odzielonych spacjami, aby każda kolejna liczba była wyświetlona w nowym wierszu. Podwójne spacje traktuj jako pojedyncze, a wszystkie znaki niebędące cyframi zignoruj _(traktuj jakby ich nie było)_.
+
+```bash
+547 042  793 a81 66 # input string
+# console output...
+547
+42
+793
+81
+66
+```
+
+**Featchers**
+
+Zmodyfikuj program w taki sposób, aby w przypadku, gdy w liczbie pojawi się znak specjalny _(nie będący cyfrą)_, całą liczbę pomijał.
+
+```bash
+547 042  793 a81 66 # input string
+# console output...
+547
+42
+793
+66
+```
+
 ### Zadanie 1
 
 Napisać program, który przeanalizuje wprowadzony na stałe łańcuch znaków oraz wyświetli z niego jedynie litery i cyfry, a wszystkie duże litery zamieni na małe. Wszystkie pozostałe znaki lub grupy znaków zamieni separator `-` w taki sposób, aby separatory z sobą nie sąsiadowały. Separatory na początku i końcu łańcucha mają zostać pominięte.
 
 ```bash
 ^^Hel1o*_W0rld$ # input string
-he11o-world # console output
+hel1o-world # console output
 ```
 
 Pomocny może okazać się przykład z wyświetlaniem kolejnych znaków łańcucha:
@@ -33,7 +60,7 @@ void replaceFnc(char str[], char sep)
 - Sprawić, aby funkcja nie wyświetlała wyniku, a jedynie zwracała łańcuch znaków, który będzie wyświetalny w funkcji głównej. Łańcuch wejściowy nie ma ulec modyfikacji.
 
 ```cpp
-return char *replaceFnc(char *str, char sep);
+char *replaceFnc(char *str, char sep);
 ```
 
 - Dodać, w obsłudze funkcji, zamianę dużych liter na małe lub odwrotnie, w zależności od przekazanego parametru.
