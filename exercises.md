@@ -1,6 +1,12 @@
 ### Zadanie 1
 
-Napisać program, który przeanalizuje wprowadzony na stałe łańcuch znaków oraz wyświetli z niego jedynie litery i cyfry. Wszystkie pozostałe znaki lub grupy znaków zamieni separator '-' w taki sposób, aby separatory z sobą nie sąsiadowały. Separatory na początku i końcu łańcucha mają zostać pominięte.
+Napisać program, który przeanalizuje wprowadzony na stałe łańcuch znaków oraz wyświetli z niego jedynie litery i cyfry, a wszystkie duże litery zamieni na małe. Wszystkie pozostałe znaki lub grupy znaków zamieni separator `-` w taki sposób, aby separatory z sobą nie sąsiadowały. Separatory na początku i końcu łańcucha mają zostać pominięte.
+
+```bash
+^^Hel1o*_W0rld$ # input string
+he11o-world # console output
+```
+
 Pomocny może okazać się przykład z wyświetlaniem kolejnych znaków łańcucha:
 
 ```cpp
@@ -10,8 +16,8 @@ char str[] = "example";
 // wypełnienie pamięcie wartością "example\0"
 char *p = str; // deklaracja wskaźnika p i ustawienie go na str
 while(*p) { // wykonuje dopuki wskaźnik wskazuje na inną wartość niż 0
- printf("%c", *p); // wyświetlenie wartosci na którą wskazuje wskaźnik
- p++; // inkrementacjia położenia wskaźnika
+  printf("%c", *p); // wyświetlenie wartosci na którą wskazuje wskaźnik
+  p++; // inkrementacja położenia wskaźnika
 }
 ```
 
@@ -36,8 +42,6 @@ return char *replaceFnc(char *str, char sep);
 
 ### Zadanie 2
 
-**Zadanie inne niż mówiłem** ❗ Jak to czytasz, powiadom nieświadomych kolegów z grupy ❕
-
 Doimplementować do pseudoklasy `vector` pseudometody:
 - `vectorPrint` - wyświetlanie zawartości wektora
 - `vectorMerge` - łączenie dwóch wektorów
@@ -47,4 +51,4 @@ Doimplementować do pseudoklasy `vector` pseudometody:
 - `vestorPop` - usówanie ostatniej wartości z wektora
 - `vestorPush` - dodawanie do wektora wartości
 
-Każda funkcja musi być ładnie opisana oraz musi w funkcji `main` znajdować się jej przykładowe wywołanie. Jak ktoś nie wyśle mi chociaż jednej funkcji, wywalam z ćwiczeń 😠
+Każda funkcja musi być ładnie opisana (prz ypmocy ) oraz musi w funkcji `main` znajdować się jej przykładowe wywołanie.

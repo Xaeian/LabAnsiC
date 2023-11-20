@@ -1,9 +1,8 @@
 {
   "editor.formatOnSave": false,
   "editor.tabSize": 2,
-  "editor.mouseWheelZoom": true,
   "code-runner.executorMap": {
-    "c": "gcc ./src/file.c ./src/main.c -o ./main.exe -lWs2_32 -lwsock32 && main.exe"
+    "c": "gcc ./src/main.c -o ./main.exe -lWs2_32 -lwsock32 && main.exe"
   },
   "files.associations": {
     "stdio.h": "c",

@@ -1,8 +1,26 @@
+### Programowanie niskopoziomowe
+
+Na wstępie chciałbym skrytyować obecnie stosowany na uczelniach podział języków na niskopoziomowe, do których, zgodnie z definicją, zaliczylibyśmy **Assambler**, oraz wysokopozoimowe do grupy których wrzucilibyśmy całą resztę (oczywiście z perspektywy obednie wykorzystywanych technologii). Raczej widziałbym gradient, gdzie językowi **C** jest znacznie bliżej do Assambera, niż do wysokopoziomowego **JavaScriptu** z perspektywy działania _(pomimo ich podobieństw składniowych)_.
+
 ## Dlaczego C
 
 Na języki programowania warto patrzeć jak na narzędzia. A narzędzia jak to narzędzia, często są dość uniwersalne, jednak zawsze mają określone zadanie, z którym radzą sobie dobrze. A jak jakieś narzędzie radzi sobie z czymś najlepiej ciężko, żeby znikło z skrzynki narzedziowej.
 
-Dla języka **C** taką niszą są systemy wbudowane (embeded system)...
+I pomimo, że język C powstał jako język zastosowania ogólnego to z biegiem lat z większości zastosowań został wyparty przez nowe technologe jak **Java**, **PHP** czy **Python**. Niszą w której język **C** nadal góruje są systemy wbudowane (embeded system). Mimo, że język **Rust** stara się powolutku wciskać w tą niszę to jednak ciężko powiedzieć jak to się skończy, poniewż jego ekspansja jest bardzo wolna względem przytoczonych wyżej przełomowych technologii.
+
+Ale czemu tak stary język nadal jest najlepszy!? Odpowiedź może niektórych rozczarować, ale prawda jest taka, że jest on poprostu **wystarczający**, a przez wieloletnią obecność na runku wyrobił zapewnia bardzo duże wsparcie ze strony dostepnych rozwiązań i społeczności.
+
+W języku C bardzo często trzeba dopimplementować funkcjonalności, które są dostępne od ręki w perspektywie języków wyrzego rzędu. Ale dlagego w C ich brakję?
+
+W nowszych językach bardzo często optymalizacja skierowana jest w kierunku funkcjonalności, aby użytkownicy gotowych metod i funkcji zawsze otrzymywali kompletne rozwiązanie. Podczas pogamowania mikrokontrolerów jesteśmy ograniczani zarówno mocą obliczeniową jak i dostępnością pamięci, toteż trzeba mieć to na uwadzę, jednak zawsze jakaś funkcjonalność jest wymagana. Nasz program musi coś robić... A zatem o tym jak zaawansowane mają być nasze funkcję decydujemy jedynie my! Dlatego to właśnie my odpowiadamy za to jakie elementy zaimplementowujemy w naszej aplikacji. Czasem poprzez dodawanie wbudownaych bibliotek. Niekiedy dopisowując własne funkcję, a gdy dysponujemy trochę mocniejszym mikrokontolrerem to możliwe staje się dodanie bardziej rozbudowanych bibliotk z zewnąrz. Cały czas balansując na krawędzi funkcjonalności, zajętości pamięci i szybkości wykonywania kodu.
+
+Już dodatki wprowadzone w języku **C++** jako objekty i łańcuchy znaków ze względu na dodaktowy narzut są często nie wykorzystywane podczas programowania mikrokontorlerów. Nawet bardzo często rezygnuję się z funkcji `sprintf`, dostpnej w języku C, której użyteczność jest niewielka względem wagie w kB, zużycia pamięci podręcznej i szybkości działnia. Często stosuje się prostrze, szyte na mierę rozwiązania. Ale to wszystko zależy od procka na którym ostatecznie ma pracować aplikacja i odczekwań w stosunku do niej...
+
+Dodatowe **C** jest jedynom technologią w której zawsze dostarczane są pliki nagłówkowe dla mikrokontrolerów, co jest szczególnie ważne, gdy rozpoczynamy naukę. Czasami wspierane są inne technologie. Często społeczność łada braki, których nie zapewnił producent, ale na start lepiej mieć oficjalne gotowce, z których można skorzystać.
+
+### Assembler?
+
+Ale dlaczego nie Assembler? Nie bez powodu, patrząc na statystyki, jest on znacznie rzadziej wykorzystywany. Powodów jest kilka, ale najważniejszą jest to, że nie jest on przenośny. Kod napisany w C możemy z łatfością przenieść na inną platformę w odróżnieniu od assemblera, gdzie instrukcje różnią się w zależności od architektury procesora. Dodatkowo język c jest bardziej przystępny, a jego składnia jest czytelnijsza - ale tu oczywiście najbardziej zaawanoowaniu wyjadaczej Assembera mogą się nie zgodzić. Myślę również, że w większości przypadków, gdy kod będą pisali mniej doświadczeni programiści, a zadanie będzie dość trywialne optymalizacja, którą zapewi kompilator C/C++ będzie lepsza niż w przypadku kodu Assembera. Oczywiście Assembera nadal pozostaje świetnym narzędziem do zadań specjalnych, jednak na początku nauki chyba lepiej sięgać po prostrze zagadanienia.
 
 ## Konfiguracja środowiska
 
@@ -852,6 +870,12 @@ int main(void)
 
 Struktura `BUFF_t` oraz funkcję `BUFF_Push`, `BUFF_Send` tworzą pseudoklasę.
 
+
+## Embedded Systems - GPIO
+
+Podstawowymi funkcjonalnościami z jakimi spotykamy się w systemach włbudowanych są wejścia/wyjścia cyfrowe `GPIO`, a najprostrzym ich wykorzystaniem jest sterowanie diodą i detekcja wciśnięcia przycisku. W naszym przykładzie program świci diodą podłączoną do `PD3` 
+
+
 <!--
 
 liczy pierwsze i listy
@@ -1015,3 +1039,33 @@ crates
 https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16
 
 -->
+
+## Plan wykładów
+
+1. Porównanie technologii programowania w perspektywie ich wykorzystania.
+2. Praca z kompilatorem C/C++ oraz konfiguracja środowiska.
+3. Podstawy języka **C**. Typy zmiennych. Struktura programu. Operatory arytmetycznej i logiczne. Instrukcje warunkowe i pętle.Typy wyliczeniowe.
+4. Tablice, wskaźniki, referencje, łańcuchy znaków i tablica ASCII
+5. Funkcje, konwencje nazw, pisanie komentarzy.
+6. Operacje binarne
+7. Operacje na plikach, tworzenie bibliotek _(rozbudowywanie projektu)_ oraz makra pre-kompilatora
+8. Buforowanie danych w _(celu wysłania ich poprzez UART)_
+9. Struktury i unie. Programowanie pseudo-objektowe w języku C
+10. Strukturyzacja peryferiów na przykładzie GPIO w mikrokontrolerze _(STM32 lub AVR)_
+11. Implementacja list w kontekście problemu poszukiwania bardzo dużych liczb pierwszych
+12. Bazy danych
+13. Podstawy języka **Assembler**. Podstawowe instrukcje. Emulacja rozwiązań znanych z języka C. Łączenie oby języków.
+
+### Efekt nauki
+
+Student widzi różnice pomiędzy różnymi technologiami programowania. Dostrzega przewagi języków programowalnych i kompilowanych. Jest w stanie, w zależności od napotkanego problemu, wskazać optymalne rozwiązanie.
+
+Student potrafi stworzyć kompilowany projekt w języku C oraz go prowadzić, wliczając w to tworzenie wieloplikowych zależności.
+
+Student widzi różnice pomiędzy programem uruchamianym na systemie operacyjnym oraz bezpośrednio na procesorze/mikrokontrolerze.
+
+Przechodzenie pomiędzy systemami liczbowymi nie stanowi dla ucznia problemu. Wykonuje operacje arytmetyczne i logiczne. Jest w stanie na podstawie kodu oszacować, jakie jest jego zadanie.
+
+Student potrafi samodzielnie pisać własny kod w języku C oraz zaimplementować gotowe rozwiązania.
+
+Student, w razie konieczności, potrafi wplatać wstawki assembler do języka C.

@@ -77,8 +77,12 @@ bool vectorIsSet(vector_t *vector)
 
 // #define ARRAY_LENGTH 16
 
+vector_t vector; 
+
 int main(void)
 {
+
+
   /*
   int32_t array[ARRAY_LENGTH];
   uint16_t length = FillArray32MinMax(array, -5, 10, ARRAY_LENGTH);
@@ -92,7 +96,9 @@ int main(void)
   else printf("error");
   */
 
-  vector_t vector = vectorInit(5, 20);
+  
+  
+  // = vectorInit(20, 5);
   
   if(vectorIsSet(&vector)) {
     for(int i = 0; i < vector.length; i++) printf("%d ", vector.buffer[i]);

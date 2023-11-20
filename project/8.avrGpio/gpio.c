@@ -21,6 +21,7 @@ void GPIO_Rst(GPIO_t *gpio)
 void GPIO_Tgl(GPIO_t *gpio)
 {
   GPIO_PORT(gpio->_gpio) ^= 1 << gpio->_pin;
+  gpio->set = !gpio->set;
 }
 
 bool GPIO_In(GPIO_t *gpio)
@@ -45,7 +46,6 @@ void GPIO_Init(GPIO_t *gpio)
     gpio->_pin = (gpio->pin) - 14;
   }
   else return;
-  
   if(gpio->mode == GPIO_MODE_Output) {
     GPIO_DDR(gpio->_gpio) |= 1 << gpio->_pin;
     if(gpio->set) GPIO_Set(gpio);
