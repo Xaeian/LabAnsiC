@@ -47,7 +47,6 @@ bool data_save(const char *name, uint8_t **bytes, size_t size)
   FILE *fp = fopen(name, "wb");
   if (fp == NULL)
     return false;
-
   fwrite(*bytes, sizeof(uint8_t), size, fp);
   fclose(fp);
 }
